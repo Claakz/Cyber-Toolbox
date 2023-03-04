@@ -12,6 +12,10 @@ import subprocess
 import threading
 import googlesearch
 import pandas as pd
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from netaddr import IPAddress
 from prettytable import PrettyTable
 
@@ -103,7 +107,7 @@ def validate_ports(range):
 
     return True
 
-def export_prettytable(namefile,table):
+def export_prettytable(namefile, table):
         num = 0
         file = namefile + ".csv"
         for num in range(100):
@@ -115,6 +119,107 @@ def export_prettytable(namefile,table):
                         table.to_csv(file, index=False, header=True)
                         break
         print(f"\nLe fichier{GREEN} {file} {NC}est maintenant disponible dans le dossier {GREEN}" + os.getcwd() + f"{NC}.\n")
+
+def export_pdf(file_name, df):
+   
+    file = file_name + ".pdf"
+    for num in range(100):
+                if os.path.exists(file):
+                        num = num + 1
+                        num_str = str(num)
+                        file = file_name + "_(" + num_str + ").pdf"
+                else:
+                        doc = SimpleDocTemplate(file, pagesize=letter)
+                        break
+
+    # Titre du PDF (titre dans l'onglet chrome par exemple)
+    doc.title = "Rapport automatique"
+
+    # Styles des champs du PDF
+    styles = getSampleStyleSheet()
+    title_style = styles["Title"]
+    body_style = styles["Normal"]
+    body_style = ParagraphStyle(name="subtitle", fontSize=10, leading=14)
+    subtitle_style = ParagraphStyle(name="subtitle", fontSize=14, leading=18)
+    espace = Spacer(1, 14)
+    
+    # Title PDF
+    text_title = "Rapport d'Audit de Sécurité"
+    title = Paragraph(text_title, title_style)
+    elements = [title]
+    elements.append(espace)
+    
+    # Subtitle PDF
+    text_subtitle = "Introduction"
+    subtitle = Paragraph(text_subtitle, subtitle_style)
+    elements.append(subtitle)
+    elements.append(espace)
+    
+    # Body PDF
+    text_body = "Ce rapport d'audit de sécurité a été réalisé pour évaluer les vulnérabilités potentielles de votre système d'information. L'objectif de cet audit était de déterminer si le système était sécurisé contre les menaces externes, telles que les attaques de pirates informatiques, les tentatives d'intrusion et les vulnérabilités système."
+    body = Paragraph(text_body, body_style)
+    elements.append(body)
+    elements.append(espace)
+
+    # Body PDF
+    text_body = "Pour réaliser cet audit de sécurité, nous avons effectué une analyse du système d'information, en utilisant une combinaison de techniques automatisées."
+    body = Paragraph(text_body, body_style)
+    elements.append(body)
+    elements.append(espace)
+
+    # Subtitle PDF
+    text_subtitle = "Recommandations"
+    subtitle = Paragraph(text_subtitle, subtitle_style)
+    elements.append(subtitle)
+    elements.append(espace)
+
+    # Body PDF
+    text_body = "Pour corriger les vulnérabilités potentielles identifiées, nous recommandons les actions suivantes :"
+    body = Paragraph(text_body, body_style)
+    elements.append(body)
+    text_body = "• Appliquer les mises à jour de sécurité recommandées pour les systèmes et les applications utilisés."
+    body = Paragraph(text_body, body_style)
+    elements.append(body)
+    text_body = "• Utiliser les protocoles de sécurité adéquats pour éviter les attaques de type man-in-the-middle."
+    body = Paragraph(text_body, body_style)
+    elements.append(body)
+    text_body = "• Faire attention aux informations publiées par vos noms de domaines."
+    body = Paragraph(text_body, body_style)
+    elements.append(body)
+    elements.append(espace)
+
+    # Subtitle PDF
+    text_subtitle = "Résultats"
+    subtitle = Paragraph(text_subtitle, subtitle_style)
+    elements.append(subtitle)
+    elements.append(espace)
+
+    table_data = [df.columns.tolist()] + df.values.tolist()
+    table = Table(table_data)
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.black),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+        ('ALIGN', (0, 0), (-1, 0), 'CENTER'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 6),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.white),
+        ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
+        ('ALIGN', (0, 1), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 1), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 1), (-1, -1), 6),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('BOX', (0, 0), (-1, -1), 1, colors.black),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('HRULES', (0, 1), (-1, -1), 1, colors.grey),
+    ]))
+    # Ajouter les éléments au document et générer le PDF
+    elements.append(table)
+    elements.append(espace)
+    doc.build(elements)
+
+    print(f"\nLe fichier{GREEN} {file} {NC}est maintenant disponible dans le dossier {GREEN}" + os.getcwd() + f"{NC}.\n")
 
 def loading():
         frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
@@ -239,7 +344,8 @@ def active_scan():
                                                                                         nb_cve = nb_cve + 1
                                                                                         cvss.append(cvss_score)
                                                                                         cve = cve["cve"]["CVE_data_meta"]["ID"]
-                                                                                        cve = "https://nvd.nist.gov/vuln/detail/" + cve
+                                                                                        # Decommenter la ligne ci dessous si on souhaite avoir les liens des CVEs à la place du numéro de CVE
+                                                                                        #cve = "https://nvd.nist.gov/vuln/detail/" + cve
                                                                                         name_cve.append(cve)
                                                                                         #name_cve.append(cve["cve"]["CVE_data_meta"]["ID"])
                                                                                         # Incrémente le tableau avec les informations des ports avec CVE
@@ -249,7 +355,7 @@ def active_scan():
                                                                                         else:
                                                                                                 # Si plusieurs CVE, ajoute l'un après l'autre
                                                                                                 for i in range(1, nb_cve):
-                                                                                                        table.loc[location] = ["--", "--", "--", "--", name_cve[i+1], cvss[i+1]]
+                                                                                                        table.loc[location] = ["-", "-", "-", "-", name_cve[i+1], cvss[i+1]]
                                                                                                         location = location + 1
                                                                 else:
                                                                         error_api = True
@@ -281,11 +387,14 @@ def active_scan():
                                 print(f"\nLe système d'exploitation de {GREEN}" + ip_address + f"{NC} est {GREEN}"+ sys_name + f".{NC} Fiabilité : {GREEN}" + sys_accuracy + f"%{NC}.\n")
 
                                 # Export CSV de la sortie du scan
-                                print(f"Toolbox/scan >>> Exporter les informations dans un fichier CSV ? (y/n)")
+                                print(f"Toolbox/scan >>> Exporter les informations dans un fichier CSV ? (csv/pdf/no)")
                                 export = input("Toolbox/scan >>> ") or "n"
-                                if export == "y" or export == "Y":
+                                if export == "csv":
                                         namefile = "scan_actif_" + ip_address
                                         export_prettytable(namefile,table)
+                                elif export == "pdf":
+                                        namefile = "scan_actif_" + ip_address
+                                        export_pdf(namefile, table)        
                                 else:
                                         print(f"\nVous avez choisi de ne pas exporter les données.\n")
                         # Message d'erreur en cas de données incorrectes
@@ -300,7 +409,7 @@ def active_scan():
 
 ### Reconnaissance ###
 
-def reconnaissance():
+def recon():
 
         system = platform.system()
 
@@ -395,12 +504,15 @@ def reconnaissance():
         print(f"La reconnaissance du réseau {GREEN}" + network + f"{NC} donne les informations suivantes :\n")
         print(pt)
 
-        print(f"\nToolbox/reconnaissance >>> Exporter les informations dans un fichier CSV ? (y/n)")
+        print(f"\nToolbox/reconnaissance >>> Exporter les informations dans un fichier CSV ? (csv/pdf/no)")
         export = input(f"Toolbox/reconnaissance >>> ") or "n"
         # Export CSV de la sortie du scan
-        if export == "y" or export == "Y":
+        if export == "csv":
                 namefile = "reconnaissance_" + str(ip_address) + "-" + str(mask)
                 export_prettytable(namefile,table)
+        elif export == "pdf":
+                namefile = "reconnaissance_" + str(ip_address) + "-" + str(mask)
+                export_pdf(namefile, table)
         else:
                 print(f"\nVous avez choisi de ne pas exporter les données.\n")
 
@@ -487,12 +599,15 @@ def dorks():
         print(f"La recherche Google Dorks donne les informations suivantes :\n")
         print(pt)
 
-        print(f"\nToolbox/dorks >>> Exporter les informations dans un fichier CSV ? (y/n)")
+        print(f"\nToolbox/dorks >>> Exporter les informations dans un fichier CSV ? (csv/pdf/no)")
         export = input(f"Toolbox/dorks >>> ") or "n"
         # Export CSV de la sortie recherche google dorks
-        if export == "y" or export == "Y":
+        if export == "csv":
                 namefile = "dorks_" + str(domain)
                 export_prettytable(namefile,table)
+        elif export == "pdf":
+                namefile = "dorks_" + str(domain)
+                export_pdf(namefile, table)
         else:
                 print(f"\nVous avez choisi de ne pas exporter les données.\n")
 
@@ -510,11 +625,11 @@ while again == "true":
                 case 'help' | '?':
                         print(help)
                 case 'recon':
-                        reconnaissance()
+                        recon()
                 case 'scan':
                         active_scan()
                 case 'CVSS' | 'cvss':
-                        cvss()       
+                        cvss()
                 case 'dorks':
                         dorks()
                 case 'clear':

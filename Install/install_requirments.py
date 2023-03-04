@@ -1,1 +1,2 @@
-pip install googlesearch-python
+pip install python-nmap
+pip install google
