@@ -12,6 +12,8 @@ import subprocess
 import threading
 import googlesearch
 import pandas as pd
+import datetime
+from dateutil.parser import parse
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer, Paragraph
@@ -519,7 +521,98 @@ def recon():
 ### WIKI CVSS ###
 
 def cvss():
-        print("WIKI CVSS")
+        # URL de l'API NVD
+        url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
+
+        # Demander à l'utilisateur le score minimum voulu
+        print(f"Toolbox/cvss >>> Entrez le score minimum pour votre recherche (entre 0 et 10)")
+        score_min = float(input("Toolbox/cvss >>> "))
+
+        # Demander à l'utilisateur l'intervalle de temps depuis la publication de la CVE
+        print(f"Toolbox/cvss >>> Depuis combien de temps en jours pour la publication des CVE (30 jours max)")
+        interval = int(input("Toolbox/cvss >>> "))
+        if interval > 30:
+                print(f"\n{ORANGE}Error : 30 jours maximum !{NC}\n")
+                return
+
+        # Calculer la date limite correspondant à l'intervalle de temps donné
+        limit_date = datetime.datetime.now() - datetime.timedelta(days=interval)
+
+        # Formater la date limite sous forme de chaîne de caractères pour l'inclure dans la requête API
+        start_date = limit_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+        date = datetime.datetime.now()
+        end_date = date.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+        # Effectuer la requête API avec les paramètres donnés
+        response = requests.get(url, params={"resultsPerPage": 2000, "pubStartDate": start_date, "pubEndDate": end_date})
+
+        # vérifie si la requête a réussi
+        if response.status_code == 200:
+                # Créer un dictionnaire avec les données pour le tableau
+                data_table = {'Date de publication': [],
+                                'CVE': [],
+                                'CVSS': [],
+                                'Liens': []
+                                }
+                # Créer le tableau à partir du dictionnaire
+                table = pd.DataFrame(data_table)
+                location = 1
+                data = response.json()
+                counter = 0
+                for cve in data['vulnerabilities']:
+                        counter += 1
+                        cve_id = cve["cve"]["id"]
+                        date_pub = cve['cve']['published']
+                        date_pub = parse(date_pub)
+                        date_pub = date_pub.strftime('%d %B %Y, %H:%M:%S')
+                        # value = cve["cve"]["descriptions"]
+                        # description = value[0]['value']
+                        # vérifie si le score basemetricV3 existe
+                        if "cvssMetricV31" in cve["cve"]["metrics"]:
+                                score = cve["cve"]["metrics"]["cvssMetricV31"]
+                                cvss_data = score[0]['cvssData']
+                                base_score = float(cvss_data['baseScore'])
+                        elif "cvssMetricV3" in cve["cve"]["metrics"]:
+                                score = cve["cve"]["metrics"]["cvssMetricV3"]
+                                cvss_data = score[0]['cvssData']
+                                base_score = float(cvss_data['baseScore'])
+                        elif "cvssMetricV2" in cve["cve"]["metrics"]:
+                                score = cve["cve"]["metrics"]["cvssMetricV2"]
+                                cvss_data = score[0]['cvssData']
+                                base_score = float(cvss_data['baseScore'])
+                        else:
+                                score = "none"
+                        if score != "none":
+                                if base_score >= score_min:
+                                        link = "https://nvd.nist.gov/vuln/detail/" + cve_id
+                                        table.loc[location] = [date_pub, cve_id, base_score, link]
+                                        location = location + 1
+
+                # Créer une instance de la classe PrettyTable pour formater le tableau pandas
+                pt = PrettyTable()
+                pt.field_names = table.columns
+                for row in table.itertuples():
+                        pt.add_row(row[1:])
+                pt.align = 'c'
+
+                # Affiche le tableau avec les données du scan
+                print(f"\nLa recherche des CVEs pour le score de {GREEN}" + str(score_min) + f"{NC} depuis {GREEN}" + str(interval) + f"{NC} jours donne les informations suivantes :\n")
+                print(pt)
+
+                print(f"\nToolbox/cvss >>> Exporter les informations dans un fichier CSV ? (csv/pdf/no)")
+                export = input(f"Toolbox/cvss >>> ") or "n"
+                # Export CSV de la sortie du scan
+                if export == "csv":
+                        namefile = "cvss_" + str(score_min) + "-" + str(interval) + "j"
+                        export_prettytable(namefile,table)
+                elif export == "pdf":
+                        namefile = "cvss_" + str(score_min) + "-" + str(interval) + "j"
+                        export_pdf(namefile, table)
+                else:
+                        print(f"\nVous avez choisi de ne pas exporter les données.\n")
+        else:
+                print("La requête a échoué avec le code d'erreur", response.status_code)
 
 ### WIKI CVSS ###
 
