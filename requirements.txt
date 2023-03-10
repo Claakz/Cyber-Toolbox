@@ -1,7 +1,6 @@
 python-nmap
 google
 ipaddress
-nmap
 requests
 pandas
 datetime
