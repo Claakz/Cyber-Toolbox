@@ -36,7 +36,7 @@ Installation des prérequis pour utiliser la **Cyber-Toolbox** sur **Windows** :
 
     [Téléchargement de "Python3.x"](https://www.python.org/downloads/windows/)
     
-### ❗❗ Attention, il faut selectionner "" lors de l'installation de **Python** ❗❗ ###
+#### ❗❗ Attention, il faut selectionner "Add python.exe to PATH" lors de l'installation de **Python** ❗❗ ####
   
 * **Nmap** : peut être téléchargé à partir du site web officiel Nmap à l'adresse suivante :
 
