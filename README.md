@@ -46,7 +46,7 @@ Installation des prérequis pour utiliser la Cyber-Toolbox sur Windows :
 2. Cloner le dépôt GitHub avec la commande suivante :
 
     ```bash
-    git clone https://github.com/username/Cyber-Toolbox.git
+    git clone https://github.com/Claakz/Cyber-Toolbox
 
 3. Se rendre dans le dossier Cyber-Toolbox avec la commande :
 
