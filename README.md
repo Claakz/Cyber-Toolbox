@@ -1,4 +1,4 @@
-# Cyber-Toolbox
+# 🛡️ Cyber-Toolbox 🛡️
 
 La Cyber-Toolbox est une boîte à outils qui regroupe plusieurs outils pour aider dans la reconnaissance et la recherche de vulnérabilités sur un réseau.
 
@@ -11,7 +11,7 @@ Pour utiliser la "Cyber-Toolbox", il est necessaire d'installer :
 
 Ci-dessous, les étapes en fonction de l'OS.
 
-### Prérequis : Linux
+## Prérequis : Linux
 
 Installation des prérequis pour utiliser la Cyber-Toolbox sur Linux :
 
@@ -26,7 +26,7 @@ Installation des prérequis pour utiliser la Cyber-Toolbox sur Linux :
     ```bash
     sudo apt-get install nmap
 
-### Prérequis : Windows
+## Prérequis : Windows
 
 Installation des prérequis pour utiliser la Cyber-Toolbox sur Windows :
 
@@ -40,11 +40,7 @@ Installation des prérequis pour utiliser la Cyber-Toolbox sur Windows :
     ```bash
     https://nmap.org/download.html#windows
 
-<br>
-
-### Cyber-Toolbox : Linux
-
-<br>
+## Cyber-Toolbox : Linux
 
 1. Ouvrir un terminal
 2. Cloner le dépôt GitHub avec la commande suivante :
@@ -62,7 +58,7 @@ Installation des prérequis pour utiliser la Cyber-Toolbox sur Windows :
     ```bash
     pip install -r requirements.txt
     
-### Cyber-Toolbox : Windows
+## Cyber-Toolbox : Windows
 
 1. Télécharger le dépôt GitHub en cliquant sur le bouton "Download ZIP".
 2. Extraire le fichier ZIP.
@@ -74,10 +70,9 @@ Installation des prérequis pour utiliser la Cyber-Toolbox sur Windows :
     
 Installer les dépendances nécessaires avec la commande suivante :
 
-    ```cmd
     pip install -r requirements.txt
     
-## Utilisation de la toolbox
+# Utilisation de la toolbox
 
 La Cyber-Toolbox propose plusieurs options pour effectuer des actions sur un réseau. Voici la liste des commandes disponibles :
 
@@ -91,13 +86,12 @@ La Cyber-Toolbox propose plusieurs options pour effectuer des actions sur un ré
 
 Pour lancer une commande, il suffit de taper la commande dans l'invite de commande et d'appuyer sur Entrée. Par exemple, pour lancer la commande d'aide, tapez :
 
-    ```bash
     help
 
-Contribution
+# Contribution
 
 Toute contribution à l'amélioration de cette Cyber-Toolbox est la bienvenue. Si vous trouvez des bugs ou si vous souhaitez ajouter une fonctionnalité, n'hésitez pas à créer une Pull Request.
 
-Licence
+# Licence
 
 Ce projet est sous licence MIT. Veuillez consulter le fichier LICENSE pour plus d'informations.
