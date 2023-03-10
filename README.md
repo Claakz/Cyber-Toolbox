@@ -32,13 +32,12 @@ Installation des prérequis pour utiliser la Cyber-Toolbox sur Windows :
 
 * Python 3.x : peut être téléchargé à partir du site web officiel Python à l'adresse suivante :
 
-  ```bash
-  https://www.python.org/downloads/windows/
+    [Téléchargement de "Python3.x"](https://www.python.org/downloads/windows/)
   
 * Nmap : peut être téléchargé à partir du site web officiel Nmap à l'adresse suivante :
 
-    ```bash
-    https://nmap.org/download.html#windows
+    [Téléchargement de "Nmap"](https://nmap.org/download.html#windows)
+    
 
 ## Cyber-Toolbox : Linux
 
@@ -72,7 +71,7 @@ Installer les dépendances nécessaires avec la commande suivante :
 
     pip install -r requirements.txt
     
-# Utilisation de la toolbox
+# Commandes de la toolbox
 
 La Cyber-Toolbox propose plusieurs options pour effectuer des actions sur un réseau. Voici la liste des commandes disponibles :
 
@@ -88,10 +87,48 @@ Pour lancer une commande, il suffit de taper la commande dans l'invite de comman
 
     help
 
+# Utilisation de la toolbox
+
+Il existe une vidéo complète de quelque minutes permettant de comprendre le fonctionnement de manière détaillé :
+
+[Lien pour la vidéo youtube sur la "Cyber-Toolbox"](https://www.youtube.com/watch?v=Zw7UzdesU3E)
+
+<br>
+
+Sinon, voici un exemple rapide de chaque fonctionnalité :
+
+### help
+
+GIF
+
+### recon
+
+GIF
+
+### scan
+
+GIF
+
+### cvss
+
+GIF
+
+### dorks
+
+GIF
+
+### clear
+
+GIF
+
+### exit
+
+GIF
+
 # Contribution
 
 Toute contribution à l'amélioration de cette Cyber-Toolbox est la bienvenue. Si vous trouvez des bugs ou si vous souhaitez ajouter une fonctionnalité, n'hésitez pas à créer une Pull Request.
 
 # Licence
 
-Ce projet est sous licence MIT. Veuillez consulter le fichier LICENSE pour plus d'informations.
+Ce projet est sous licence GNU. Veuillez consulter le fichier LICENSE pour plus d'informations.
