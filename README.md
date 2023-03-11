@@ -104,7 +104,7 @@ Il existe une **vidéo complète** de quelque minutes permettant de comprendre l
 
 <br>
 
-Sinon, voici un **exemple rapide** de chaque fonctionnalité :
+Sinon, voici un **exemple rapide** de chaque fonctionnalité sous Windows (le fonctionnement est similaire sur Linux) :
 
 ### Commandes - help
 <br>
