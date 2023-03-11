@@ -38,7 +38,7 @@ Installation des prérequis pour utiliser la **Cyber-Toolbox** sur **Windows** :
     
 ❗❗❗❗  Attention, il faut selectionner **"Add python.exe to PATH"** lors de l'installation de **Python**  ❗❗❗❗
   
-* **Nmap** : peut être téléchargé à partir du site web officiel Nmap à l'adresse suivante :
+* **Nmap** : peut être téléchargé à partir du site web officiel Nmap à l'adresse suivante **(utiliser la version 7.92, il y a un bug dans la 7.93)** :
 
     [Téléchargement de "Nmap"](https://nmap.org/download.html#windows)
     
@@ -82,6 +82,7 @@ La **Cyber-Toolbox** propose plusieurs options pour effectuer des actions sur un
 * `help`: Affiche le menu d'aide contextuel
 * `recon`: Effectue une reconnaissance du réseau
 * `scan`: Effectue un scan actif sur une adresse IP
+* `autoscan`: Ajoute un scan en tâche planifiée qui effectue un scan quotidien
 * `cvss`: Effectue une recherche en fonction du CVSS
 * `dorks`: Effectue une recherche de dorks sur un domaine
 * `clear`: Efface l'invite de commande
@@ -105,31 +106,35 @@ Il existe une **vidéo complète** de quelque minutes permettant de comprendre l
 
 Sinon, voici un **exemple rapide** de chaque fonctionnalité :
 
-### Commandes
+### Commandes - help
 
 GIF
 
-### Reconnaissance
+### Reconnaissance - recon
 
 ![recon](https://user-images.githubusercontent.com/118543986/224475465-d75ee334-4699-42a8-9428-0ffe84e597dc.gif)
 
-### Scan actif
+### Scan actif - scan
 
 GIF
 
-### Wiki CVSS
+### Scan en tâche planifiée - autoscan
 
 GIF
 
-### Requête google dorks
+### Wiki CVSS - cvss
 
 GIF
 
-### Effacer l'invité de commande
+### Requête google dorks - dorks
 
 GIF
 
-### Quitter
+### Effacer l'invité de commande - clear
+
+GIF
+
+### Quitter - exit
 
 GIF
 
