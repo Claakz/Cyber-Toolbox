@@ -107,36 +107,67 @@ Il existe une **vidéo complète** de quelque minutes permettant de comprendre l
 Sinon, voici un **exemple rapide** de chaque fonctionnalité :
 
 ### Commandes - help
+<br>
 
-GIF
+![help](https://user-images.githubusercontent.com/118543986/224515232-35fab2c1-dd75-43b0-b2cc-06c54bd94309.gif)
+
+<br>
 
 ### Reconnaissance - recon
+<br>
+<br>
 
 ![recon](https://user-images.githubusercontent.com/118543986/224475465-d75ee334-4699-42a8-9428-0ffe84e597dc.gif)
 
-### Scan actif - scan
+<br>
 
-GIF
+### Scan actif - scan
+<br>
+<br>
+
+**Dans le cadre de la démonstration, la durée du scan est réduite (environ 2-3 minutes).**
+
+![scan](https://user-images.githubusercontent.com/118543986/224515698-50f1a23f-720e-414c-bb83-c71fb3cfc9f7.gif)
+
+<br>
 
 ### Scan en tâche planifiée - autoscan
+<br>
+<br>
 
-GIF
+![autoscan](https://user-images.githubusercontent.com/118543986/224516531-d8c9b17c-0d6e-4b0f-9d74-8ba163197f25.gif)
 
 ### Wiki CVSS - cvss
+<br>
+<br>
 
 GIF
+
+<br>
 
 ### Requête google dorks - dorks
+<br>
+<br>
 
 GIF
+
+<br>
 
 ### Effacer l'invité de commande - clear
+<br>
+<br>
 
-GIF
+![clear](https://user-images.githubusercontent.com/118543986/224516822-a0186d0a-296c-45ec-89d4-b3049f84757b.gif)
+
+<br>
 
 ### Quitter - exit
+<br>
+<br>
 
-GIF
+![exit](https://user-images.githubusercontent.com/118543986/224516672-ad7c2cbd-fd8c-4771-b7e3-5020e971cd97.gif)
+
+<br>
 
 # Contribution
 
