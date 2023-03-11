@@ -91,6 +91,8 @@ Pour lancer une commande, il suffit de taper la commande dans l'invite de comman
 
     help
 
+
+
 # Utilisation de la toolbox
 
 Il existe une **vidéo complète** de quelque minutes permettant de comprendre le fonctionnement de **manière détaillé** :
@@ -103,31 +105,31 @@ Il existe une **vidéo complète** de quelque minutes permettant de comprendre l
 
 Sinon, voici un **exemple rapide** de chaque fonctionnalité :
 
-### help
+### Commandes
 
 GIF
 
-### recon
+### Reconnaissance
+
+![recon](https://user-images.githubusercontent.com/118543986/224475465-d75ee334-4699-42a8-9428-0ffe84e597dc.gif)
+
+### Scan actif
 
 GIF
 
-### scan
+### Wiki CVSS
 
 GIF
 
-### cvss
+### Requête google dorks
 
 GIF
 
-### dorks
+### Effacer l'invité de commande
 
 GIF
 
-### clear
-
-GIF
-
-### exit
+### Quitter
 
 GIF
 
