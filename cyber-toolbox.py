@@ -804,10 +804,13 @@ def recon():
         output = subprocess.run(["ip", "route"], capture_output=True).stdout.decode(errors='replace')
         lines = output.split("\n")
         for line in lines:
-            if "src" in line:
+            if "link" in line:
                 # Sépare l'adresse IP et le masque de sous-réseau
                 parts = line.split()
                 network = parts[0]
+                subnet = network.strip().split('/')
+                ip_address = subnet[0]
+                mask = subnet[1]
                 print(f"\nAdresse réseau : {network}")
                 break
 
