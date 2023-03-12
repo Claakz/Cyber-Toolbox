@@ -1123,6 +1123,7 @@ except:
             case 'clear' | 'ci':
                 os.system('cls' if os.name == 'nt' else 'clear')
             case 'exit' | 'quit' | 'end':
+                print(f"\n{GREEN}Aurevoir, à bientot !{NC}\n")
                 break
             case '':
                 pass
