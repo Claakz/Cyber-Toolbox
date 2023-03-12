@@ -94,7 +94,7 @@ La **Cyber-Toolbox** propose plusieurs options pour effectuer des actions sur un
 * `help`: Affiche le menu d'aide contextuel
 * `recon`: Effectue une reconnaissance du réseau
 * `scan`: Effectue un scan actif sur une adresse IP
-* `autoscan`: Ajoute un scan en tâche planifiée qui effectue un scan quotidien
+* `autoscan`: Ajoute un scan en tâche planifiée qui effectue un scan quotidien **(uniquement sur Windows)**
 * `cvss`: Effectue une recherche en fonction du CVSS
 * `dorks`: Effectue une recherche de dorks sur un domaine
 * `clear`: Efface l'invite de commande
