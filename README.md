@@ -62,6 +62,11 @@ Installation des prérequis pour utiliser la **Cyber-Toolbox** sur **Windows** :
     ```bash
     pip install -r requirements.txt
     
+5. Exécuter la Cyber-Toolbox :
+
+    ```bash
+    sudo python3 cyber-toolbox.py
+    
 ## Cyber-Toolbox : Windows
 
 1. Télécharger le dépôt GitHub en cliquant sur le bouton "Download ZIP".
@@ -72,9 +77,15 @@ Installation des prérequis pour utiliser la **Cyber-Toolbox** sur **Windows** :
     ```cmd
     cd C:\chemin\vers\Cyber-Toolbox
     
-Installer les dépendances nécessaires avec la commande suivante :
-
+5. Installer les dépendances nécessaires avec la commande suivante :
+    
+    ```cmd
     pip install -r requirements.txt
+    
+6. Exécuter la Cyber-Toolbox :
+
+    ```cmd
+    python3 C:\chemin\vers\Cyber-Toolbox\cyber-toolbox.py
     
 # Commandes de la toolbox
 
