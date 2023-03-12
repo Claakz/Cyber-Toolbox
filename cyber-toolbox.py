@@ -82,7 +82,7 @@ help = """
         help         |     Affiche le menu d'aide contextuel
         recon        |     Effectue une reconnaissance du réseau
         scan         |     Effectue un scan actif sur une IP
-        autoscan     |     Ajoute un scan en tâche planifiée qui effectue un scan quotidien
+        autoscan     |     Ajoute une tâche planifiée qui effectue un scan quotidien (uniquement sur Windows)
         cvss         |     Effectue une recherche en fonction du CVSS
         dorks        |     Effectue une recherche dorks sur un domaine
         clear        |     Efface l'invité de commande
