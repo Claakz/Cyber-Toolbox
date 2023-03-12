@@ -1124,7 +1124,10 @@ except:
             case 'dorks':
                 dorks()
             case 'autoscan':
-                createTask()
+                if system == "Linux":
+                    print(f"\n{ORANGE}Cette fonctionnalité n'est pas disponible sur Linux.{NC}\n")
+                else:
+                    createTask()
             case 'clear' | 'ci':
                 os.system('cls' if os.name == 'nt' else 'clear')
             case 'exit' | 'quit' | 'end':
