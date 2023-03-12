@@ -22,6 +22,7 @@ Installation des prérequis pour utiliser la **Cyber-Toolbox** sur **Linux** :
     ```bash
     sudo apt-get update
     sudo apt-get install python3
+    sudo apt-get install pip
 
 * **Nmap** : peut être installé en utilisant la commande suivante :
 
