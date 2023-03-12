@@ -311,6 +311,10 @@ def active_scan():
 
     ip_address = get_ip_address(adresseIPorDNS)
 
+    if ip_address == "127.0.0.1" and system == "Linux":
+        print(f"\n{ORANGE}Impossible de scanner la loopback sur Linux.{NC}\n")
+        return
+
     # Vérifie si l'entrée est une IP valide
     if validate_ip_address(ip_address):
 
