@@ -744,7 +744,7 @@ def createTask():
                         os.system('schtasks /create /sc daily /tn "' + name_task + '" /tr "powershell py ' + newPathFileScript + '  ' + Param + '" /st ' + timeSchuduler + '')
                         print("")
                     except:
-                        print(f"\nErreur lors de la création de la tâche planifiée.\n")
+                        print(f"\n\n{ORANGE}Erreur lors de la création de la tâche planifiée.{NC}\n")
                 case '2':
                     cpFileScript(0)
                     deleteTask()
@@ -754,7 +754,7 @@ def createTask():
                 os.system('schtasks /create /sc daily /tn "' + name_task + '" /tr "powershell py ' + newPathFileScript + '  ' + Param + '" /st ' + timeSchuduler + '')
                 print("")
             except:
-                print(f"\nErreur lors de la création de la tâche planifiée.\n")
+                print(f"\n\n{ORANGE}Erreur lors de la création de la tâche planifiée.{NC}\n")
 
 
     elif platform.system() == "Linux":
