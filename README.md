@@ -141,7 +141,7 @@ Sinon, voici un **exemple rapide** de chaque fonctionnalité sous Windows (le fo
 <br>
 <br>
 
-GIF
+![cvss](https://user-images.githubusercontent.com/118543986/224517136-62bb0079-f01b-437e-ab46-17767720665a.gif)
 
 <br>
 
@@ -149,7 +149,7 @@ GIF
 <br>
 <br>
 
-GIF
+![dorks](https://user-images.githubusercontent.com/118543986/224517062-4deb6ee7-3647-48d9-9549-16b568e54679.gif)
 
 <br>
 
