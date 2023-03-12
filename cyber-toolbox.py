@@ -821,17 +821,16 @@ def recon():
     elif system == "Windows":
         # Exécute la commande "ipconfig" pour récupérer l'adresse IP et le masque de sous-réseau
         # Voir pour utiliser la commande route print pour être sur de l'IP
-        output = subprocess.run(["ipconfig"], capture_output=True).stdout.decode(errors='replace')
+        ip_address = socket.gethostbyname(socket.gethostname())
+        output = subprocess.run(["route", "print"], capture_output=True).stdout.decode(errors='replace')
         lines = output.split("\n")
         for line in lines:
-            if "IPv4" in line:
-                # Sépare l'adresse IP
-                parts = line.split()
-                ip_address = parts[-1]
-            if "Masque" in line:
-                # Sépare le masque de sous-réseau
-                parts = line.split()
-                subnet_mask = parts[-1]
+            if ip_address in line:
+                if "0.0.0.0" not in line:
+                    # Sépare le masque de sous-réseau
+                    parts = line.split()
+                    subnet_mask = parts[1]
+                    break
 
         # Déterminer le réseau à partir de l'adresse IP et du masque de sous-réseau
         mask = IPAddress(subnet_mask).netmask_bits()
