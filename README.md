@@ -92,7 +92,11 @@ Pour lancer une commande, il suffit de taper la commande dans l'invite de comman
 
     help
 
+Pour chaque commande, il est demandé à l'utilisateur s'il souhaite exporter les informations en **PDF** ou en **CSV**. Voici un exemple pour un export **PDF** :
 
+![insane-pdf](https://user-images.githubusercontent.com/118543986/224535738-d0a47221-cc71-40e8-8fd3-95888dd1d550.gif)
+
+<br>
 
 # Utilisation de la toolbox
 
