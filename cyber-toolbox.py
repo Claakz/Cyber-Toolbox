@@ -839,8 +839,7 @@ def recon():
         network = str(ip_network) + "/" + str(mask)
 
         # Affiche le réseau concerné
-        print(f"\nAdresse réseau : {ip_network}")
-        print(f"Masque de sous-réseau : {subnet_mask}")
+        print(f"\nAdresse réseau : {network}")
 
     else:
         print("Système d'exploitation non supporté.")
