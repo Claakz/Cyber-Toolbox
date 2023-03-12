@@ -100,15 +100,10 @@ Pour chaque commande, il est demandé à l'utilisateur s'il souhaite exporter le
 
 # Utilisation de la toolbox
 
-Il existe une **vidéo complète** de quelque minutes permettant de comprendre le fonctionnement de **manière détaillé** :
-
 <br>
 
-[Lien pour la vidéo youtube sur la "Cyber-Toolbox"](https://www.youtube.com/watch?v=Zw7UzdesU3E)
+Voici un **exemple rapide** de chaque fonctionnalité sous Windows (le fonctionnement est similaire sur Linux) :
 
-<br>
-
-Sinon, voici un **exemple rapide** de chaque fonctionnalité sous Windows (le fonctionnement est similaire sur Linux) :
 
 ### Commandes - help
 <br>
